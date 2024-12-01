@@ -38,7 +38,11 @@ function LoginForm() {
       )
 
       const idToken = await userCredential.user.getIdToken()
-      localStorage.setItem('idToken', idToken)
+      const saveToken = (token) => {
+        localStorage.removeItem('idToken 1')
+        localStorage.setItem('idToken', idToken)
+      }
+      saveToken(idToken)
 
       console.log('Datos enviados al backend:', {
         idToken,
