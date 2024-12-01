@@ -14,7 +14,7 @@ function CreatePost() {
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
 
-    const urlApi = 'http://localhost:8080/posts/create'             //import.meta.env.VITE_POST_CREATE_URL
+    const urlApi = import.meta.env.VITE_POST_CREATE_URL
 
     const handleChange = (e) => {
         setFormData({
@@ -26,10 +26,6 @@ function CreatePost() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-
-        console.log('Request payload:', formData);
-        
-
 
         try {
             const idToken = localStorage.getItem('idToken')
@@ -52,7 +48,6 @@ function CreatePost() {
             setLoading(false)
         }
     }
-
 
     return (
         <>
