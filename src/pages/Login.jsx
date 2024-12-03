@@ -44,17 +44,11 @@ function LoginForm() {
       }
       saveToken(idToken)
 
-      console.log('Datos enviados al backend:', {
-        idToken,
-        email: formData.email,
-      })
-
       const response = await axios.post(urlApi, {
         idToken,
         email: formData.email,
       })
 
-      console.log('Respuesta del backend:', response.data)
       setMessage(response.data.message)
 
       navigate('/')
@@ -69,7 +63,7 @@ function LoginForm() {
         setMessage('Error de conexión. Verifica tu red.')
       } else {
         console.error('Error inesperado:', error.message)
-        setMessage('Ocurrió un error inesperado. Inténtalo de nuevo.')
+        setMessage('Credenciales incorrectas.')
       }
     } finally {
       setLoading(false)

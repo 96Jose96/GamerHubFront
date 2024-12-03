@@ -5,6 +5,7 @@ import RegistryForm from '../pages/RegistryForm'
 import LoginForm from '../pages/Login'
 import Posts from '../pages/Posts'
 import CreatePost from '../pages/PostForm'
+import MyPosts from '../pages/MyPosts'
 
 function Paths() {
     return (
@@ -15,6 +16,7 @@ function Paths() {
             <Route path='/login' element={<LoginForm />} />
             <Route path='/posts' element={<Posts />} />
             <Route path='/posts/create' element={<CreatePost/>} />
+            <Route path='/posts/myposts' element={<MyPosts />} />
         </Routes>
     )
 }

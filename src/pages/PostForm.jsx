@@ -14,7 +14,7 @@ function CreatePost() {
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState('')
 
-    const urlApi = import.meta.env.VITE_POST_CREATE_URL
+    const urlApi = import.meta.env.VITE_POSTS_CREATE_URL
 
     const handleChange = (e) => {
         setFormData({
@@ -79,7 +79,7 @@ function CreatePost() {
             required
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="image">URL de Imagen:</label>
           <input
             type="text"
@@ -88,7 +88,7 @@ function CreatePost() {
             value={formData.image}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <button type="submit" disabled={loading}>
           {loading ? "Publicando..." : "Crear Publicación"}
         </button>
