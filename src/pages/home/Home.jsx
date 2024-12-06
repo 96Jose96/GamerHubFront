@@ -70,11 +70,9 @@ function Home() {
                                         alt={news.title}
                                         className={styles.image}
                                     />
-                                    {/* Título encima de la imagen */}
                                     <h2 className={styles.title}>{news.title}</h2>
                                 </div>
                                 <div className={styles.textContainer}>
-                                    {/* Aquí el texto que cambia según la diapositiva */}
                                     <div className={styles.welcomeText}>
                                         {currentIndex === 0 && "Bienvenido a GamerHub"}
                                         {currentIndex === 1 && "Una plataforma social para gamers"}
@@ -88,7 +86,7 @@ function Home() {
                 </div>
             )}
         </div>
-    );
+    )
     
     
     

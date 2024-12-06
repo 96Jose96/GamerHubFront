@@ -12,23 +12,23 @@
 
 .slide {
     min-width: 100%;
-    display: flex; /* Asegura que las imágenes y el texto estén en fila */
+    display: flex;
     position: relative;
 }
 
 .imageContainer {
     position: relative;
-    flex: 0 0 50%; /* Hace que la imagen ocupe la mitad izquierda */
-    padding-right: 20px; /* Separación entre la imagen y el texto */
+    flex: 0 0 50%;
+    padding-right: 20px;
 }
 
 .image {
-    max-width: 70%; /* Reducido el tamaño de las imágenes al 80% */
+    max-width: 70%;
     height: auto;
     object-fit: cover;
     border-radius: 10px;
-    margin: 0 auto; /* Centra la imagen en su contenedor */
-    display: block; /* Asegura que la imagen se comporta como un bloque */
+    margin: 0 auto;
+    display: block;
 }
 
 .title {
@@ -48,20 +48,19 @@
 }
 
 .textContainer {
-    flex: 0 0 40%; /* Hace que el texto ocupe la mitad derecha */
+    flex: 0 0 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 40px; /* Espacio entre la imagen y el texto */
-    gap: 20px; /* Espacio entre los elementos de texto */
+    padding-left: 40px;
+    gap: 20px;
 }
 
 .welcomeText {
-    font-size: 60px; /* Manteniendo un tamaño adecuado para los textos */
+    font-size: 60px;
     color: white;
     font-weight: bold;
     padding: 15px;
     border-radius: 10px;
     margin-top: 10px;
-     /* Fondo oscuro para destacar el texto */
 }

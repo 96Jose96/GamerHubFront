@@ -78,7 +78,7 @@ a {
 a:hover {
     text-decoration: none;
     color: #fff;
-    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff, 0 0 20px #28ffff; /* Resplandor neón solo al pasar el cursor */
+    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff, 0 0 20px #28ffff;
 }
 
 a::after {
@@ -97,7 +97,7 @@ a::after {
 a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
-    box-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 20px #28ffff; /* Resplandor neón en la línea solo al pasar el cursor */
+    box-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 20px #28ffff;
 }
 
 .postButton {
