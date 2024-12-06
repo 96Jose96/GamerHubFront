@@ -60,12 +60,12 @@ body {
 }
 
 button {
-    color: #28ffff;
+    color: white;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
     background: none;
-    border: solid 3px #28ffff;
+    border: solid 3px white;
     padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
@@ -100,6 +100,6 @@ button:active {
     margin-top: 40px;
     font-size: 25px;
     font-weight: bold;
-    color: #28ffff;
+    color: white;
     padding: 10px;
 }

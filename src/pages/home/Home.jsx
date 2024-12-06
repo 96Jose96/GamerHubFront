@@ -45,40 +45,54 @@ function Home() {
 
     return (
         <div>
-    {loading && !error ? (
-        <p>Cargando noticias...</p>
-    ) : error ? (
-        <p>Hubo un error: {error}</p>
-    ) : homeNews.length === 0 ? (
-        <p>No hay noticias disponibles.</p>
-    ) : (
-        <div className={styles.carousel}>
-            <div
-                className={styles.slides}
-                style={{ transform: `translatex(-${currentIndex * 100}%)` }}
-            >
-                {homeNews.map((news, index) => (
+            {loading && !error ? (
+                <p>Cargando noticias...</p>
+            ) : error ? (
+                <p>Hubo un error: {error}</p>
+            ) : homeNews.length === 0 ? (
+                <p>No hay noticias disponibles.</p>
+            ) : (
+                <div className={styles.carousel}>
                     <div
-                        key={news.id}
-                        className={`${styles.slide} ${
-                            index === currentIndex ? styles.active : ""
-                        }`}
+                        className={styles.slides}
+                        style={{ transform: `translatex(-${currentIndex * 100}%)` }}
                     >
-                        <div className={styles.imageContainer}>
-                            <img
-                                src={news.urlToImage}
-                                alt={news.title}
-                                className={styles.image}
-                            />
-                            <h2 className={styles.title}>{news.title}</h2>
-                        </div>
+                        {homeNews.map((news, index) => (
+                            <div
+                                key={news.id}
+                                className={`${styles.slide} ${
+                                    index === currentIndex ? styles.active : ""
+                                }`}
+                            >
+                                <div className={styles.imageContainer}>
+                                    <img
+                                        src={news.urlToImage}
+                                        alt={news.title}
+                                        className={styles.image}
+                                    />
+                                    {/* Título encima de la imagen */}
+                                    <h2 className={styles.title}>{news.title}</h2>
+                                </div>
+                                <div className={styles.textContainer}>
+                                    {/* Aquí el texto que cambia según la diapositiva */}
+                                    <div className={styles.welcomeText}>
+                                        {currentIndex === 0 && "Bienvenido a GamerHub"}
+                                        {currentIndex === 1 && "Una plataforma social para gamers"}
+                                        {currentIndex === 2 && "Mantente al día con nuestras noticias sobre el mundo gamer"}
+                                        {currentIndex === 3 && "Comparte en nuestra sección de publicaciones"}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            )}
         </div>
-    )}
-</div>
-    )
+    );
+    
+    
+    
+    
 }
 
 export default Home

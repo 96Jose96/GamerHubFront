@@ -107,8 +107,11 @@ function MyPosts() {
 
     return (
         <>
-    <div>
-        <h1>Mis publicaciones</h1>
+    <div className={styles.myPostsContainer}>
+        <div className={styles.myPostsTitle}>
+            <h2>Mis publicaciones</h2>
+            <Link to={'/posts'} className={styles.backLink}>Volver</Link>
+        </div>
         {myPosts.map((post) => (
             <div key={post._id} className={styles.postCard}>
                 {editPost === post._id ? (
@@ -119,15 +122,17 @@ function MyPosts() {
                             value={editForm.title} 
                             onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} 
                             placeholder="Title"
-                            className={styles.postTitle}
+                            maxLength="80"
+                            className={styles.inputTitle}
                         />
                         <textarea 
                             value={editForm.content} 
                             onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} 
                             placeholder="Content"
-                            className={styles.postContent}
+                            maxLength="200"
+                            className={styles.inputText}
                         />
-                        <button onClick={saveEdit} className="postButton">Grabar</button> {/* Puedes personalizar este botón si lo deseas */}
+                        <button onClick={saveEdit} className="postButton">Grabar</button>
                         <button onClick={cancelEdit} className="postButton">Cancelar</button>
                     </div>
                 ) : (
@@ -143,7 +148,6 @@ function MyPosts() {
                 )}
             </div>
         ))}
-        <Link to={'/posts'} className={styles.backLink}>Volver</Link>
     </div>
 </>
 

@@ -56,13 +56,9 @@ function Posts() {
     return (
         <>
   {authMessage && authMessage ? (
-    <p>{authMessage}</p>
+    <p className={styles.errorMessage}>{authMessage}</p>
   ) : (
-    <>
-      <div>
-        <Link to={'/posts/create'}>Crear publicación</Link>
-        <Link to={'/posts/myposts'}>Ir a mis publicaciones</Link>
-      </div>
+    
       <div>
         {loading && !error ? (
           <p>Cargando publicaciones...</p>
@@ -70,6 +66,10 @@ function Posts() {
           <p>Hubo un error: {error}</p>
         ) : (
           <ul className={styles.postList}>
+            <div>
+              <Link to={'/posts/create'} className={styles.createPostLink}>Crear publicación</Link>
+              <Link to={'/posts/myposts'} className={styles.myPostLink}>Ir a mis publicaciones</Link>
+            </div>
             {posts.length === 0 ? (
               <p>No hay publicaciones disponibles.</p>
             ) : (
@@ -84,11 +84,11 @@ function Posts() {
           </ul>
         )}
       </div>
-    </>
+    
   )}
 </>
 
-    );
+  );
 }
 
 export default Posts
