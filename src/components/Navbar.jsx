@@ -21,7 +21,7 @@ function Navbar() {
                     {!isAuthenticated ? (
                         <>
                             <li><Link to={'/login'}>Iniciar sesión</Link></li>
-                            <li><Link to={'/registry'}>Registrarse</Link></li>
+                            <li className={styles.registry}><Link to={'/registry'}>Registrarse</Link></li>
                         </>
                     ) : (
                         <li><button onClick={handleLogout}>Cerrar sesión</button></li>

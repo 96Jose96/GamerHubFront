@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import styles from './Posts.module.css'
 
 
 function Posts() {
@@ -54,39 +55,38 @@ function Posts() {
 
     return (
         <>
-            {authMessage && authMessage ? (
-            <p>{authMessage}</p>
+  {authMessage && authMessage ? (
+    <p>{authMessage}</p>
+  ) : (
+    <>
+      <div>
+        <Link to={'/posts/create'}>Crear publicación</Link>
+        <Link to={'/posts/myposts'}>Ir a mis publicaciones</Link>
+      </div>
+      <div>
+        {loading && !error ? (
+          <p>Cargando publicaciones...</p>
+        ) : error ? (
+          <p>Hubo un error: {error}</p>
+        ) : (
+          <ul className={styles.postList}>
+            {posts.length === 0 ? (
+              <p>No hay publicaciones disponibles.</p>
             ) : (
-            <>
-                <div>
-                    <Link to={'/posts/create'}>Crear publicación</Link>
-                    <Link to={'/posts/myposts'}>Ir a mis publicaciones</Link>
-                </div>
-                <div>
-                    {loading && !error ? (
-                        <p>Cargando publicaciones...</p>
-                    ) : error ? (
-                        <p>Hubo un error: {error}</p>
-                    ) : (
-                        <ul>
-                            {posts.length === 0 ? (
-                                <p>No hay publicaciones disponibles.</p>
-                            ) : (
-                                posts.map((post) => (
-                                    <li key={post._id}>
-                                        <h2>{post.title}</h2>
-                                        {/* <img src={post.image} alt={post.title} /> */}
-                                        <p>{post.content}</p>
-                                        <p>{post.author}</p>
-                                    </li>
-                                ))
-                            )}
-                        </ul>
-                    )}
-                </div>
-            </>
+              posts.map((post) => (
+                <li key={post._id} className={styles.postCard}>
+                  <h2 className={styles.postTitle}>{post.title}</h2>
+                  <p className={styles.postContent}>{post.content}</p>
+                  <p className={styles.postAuthor}>Autor: {post.author}</p>
+                </li>
+              ))
             )}
-        </>
+          </ul>
+        )}
+      </div>
+    </>
+  )}
+</>
 
     );
 }

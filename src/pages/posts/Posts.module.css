@@ -1,0 +1,90 @@
+/* Contenedor de lista de publicaciones */
+.postList {
+    list-style-type: none;
+    padding-top: 20px;
+    margin: 0;
+  }
+  
+  /* Estilo para cada tarjeta de publicación */
+  .postCard {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .postCard:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Estilo para el título de la publicación */
+  .postTitle {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4504a2;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para el contenido de la publicación */
+  .postContent {
+    font-size: 16px;
+    color: #8605ff;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: justify;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 120px; /* Limita la altura y agrega puntos suspensivos si el contenido es largo */
+  }
+  
+  /* Estilo para el autor */
+  .postAuthor {
+    font-size: 14px;
+    color: #002362;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  
+  /* Estilo para los enlaces */
+  a {
+    color: #28ffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 25px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto neón solo al pasar el cursor */
+a:hover {
+    text-decoration: none;
+    color: #fff; /* Cambiar el color del texto al hacer hover */
+    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff, 0 0 20px #28ffff; /* Resplandor neón solo al pasar el cursor */
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #28ffff;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de la línea debajo del enlace solo cuando se pasa el cursor */
+a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    box-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 20px #28ffff; /* Resplandor neón en la línea solo al pasar el cursor */
+}
+
+

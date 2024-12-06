@@ -1,11 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from '../pages/home/Home.jsx'
-import News from '../pages/News'
-import RegistryForm from '../pages/RegistryForm'
-import LoginForm from '../pages/Login'
-import Posts from '../pages/Posts'
-import CreatePost from '../pages/PostForm'
-import MyPosts from '../pages/MyPosts'
+import News from '../pages/news/News.jsx'
+import RegistryForm from '../pages/registry/RegistryForm.jsx'
+import LoginForm from '../pages/login/Login.jsx'
+import Posts from '../pages/posts/Posts.jsx'
+import CreatePost from '../pages/postForm/PostForm.jsx'
+import MyPosts from '../pages/myPosts/MyPosts.jsx'
 
 function Paths() {
     return (

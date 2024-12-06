@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from 'axios'
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import styles from "./PostForm.module.css"
 
 function CreatePost() {
     const [formData, setFormData] = useState({
@@ -50,53 +51,42 @@ function CreatePost() {
     }
 
     return (
-        <>
-        <div>
-            <Link to={'/posts'}>Volver</Link>
-        </div>
-        <div>
-      <h1>Crear Publicación</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Título:</label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Contenido:</label>
-          <textarea
-            name="content"
-            id="content"
-            rows="5"
-            value={formData.content}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* <div>
-          <label htmlFor="image">URL de Imagen:</label>
-          <input
-            type="text"
-            name="image"
-            id="image"
-            value={formData.image}
-            onChange={handleChange}
-          />
-        </div> */}
-        <button type="submit" disabled={loading}>
-          {loading ? "Publicando..." : "Crear Publicación"}
-        </button>
-      </form>
-      {message && <p>{message}</p>}
+      <div className={styles.formcontainer}>
+      <div>
+        <h1>Crear Publicación</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="title">Título:</label>
+            <input
+              className={styles.input}
+              type="text"
+              name="title"
+              id="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="content">Contenido:</label>
+            <textarea
+              className={styles.contentInput}
+              name="content"
+              id="content"
+              rows="5"
+              value={formData.content}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? "Publicando..." : "Crear Publicación"}
+          </button>
+        </form>
+        {message && <p>{message}</p>}
+      </div>
+      <Link to={'/posts'}>Volver</Link>
     </div>
-        
-        </>
     )
 }
 

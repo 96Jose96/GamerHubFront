@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import firebaseConfig from '../firebase/config';
+import firebaseConfig from '../../firebase/config';
 import axios from 'axios';
+import styles from '../login/Login.module.css'
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app);
@@ -81,52 +82,44 @@ function RegistryForm() {
     }
   };
   return (
-    <>
-    
-    <div className="App">
-      <h1>Registrar Usuario</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Nombre de usuario"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        {/* <input
-          type="text"
-          name="profileimage"
-          placeholder="URL de imagen de perfil (opcional)"
-          value={formData.profileimage}
-          onChange={handleChange}
-        /> */}
-        <button type="submit" disabled={loading}>
-          {loading ? 'Registrando...' : 'Registrar'}
-        </button>
-      </form>
-      <p>{message}</p>
+    <div>
+      <div className={styles.formcontainer}>
+        <h1>Registrar Usuario</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            className={styles.input}
+            type="text"
+            name="username"
+            placeholder="Nombre de usuario"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className={styles.input}
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            className={styles.input}
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? 'Registrando...' : 'Registrar'}
+          </button>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
-
-    
-    </>
-    
   );
 }
 export default RegistryForm

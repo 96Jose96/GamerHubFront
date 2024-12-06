@@ -1,14 +1,35 @@
 .navbar {
-    width: 100%;
-    background-color: #333;
-    padding: 10px;
-    box-sizing: border-box;
+    position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: white;
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
 }
 
-.navbarContent {
+.navbarContent, .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1800px;
+    padding: 0 20px;  
+}
+
+.navbarContent {
+    justify-content: space-between;
+    background-color: #43049c9c;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.navigation {
+    padding-top: 25px;
 }
 
 .logoContainer {
@@ -16,7 +37,8 @@
 }
 
 .logoContainer img {
-    max-height: 40px;
+    max-height: 100px;
+    margin-left: 20px;
 }
 
 .usernav {
@@ -31,17 +53,21 @@
 }
 
 .usernav a, .usernav button {
-    color: white;
+    color: #28ffff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     background: none;
-    border: none;
+    border: solid 3px #28ffff;
+    padding: 4px 10px;
+    border-radius: 50px ;
     cursor: pointer;
+    margin-right: 20px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
 .navigation {
     list-style-type: none;
-    display: flex;
     justify-content: center;
     margin-top: 20px;
 }
@@ -51,7 +77,49 @@
 }
 
 .navigation a {
-    color: white;
+    color: #28ffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border: solid 3px #28ffff;
+    border-radius: 50px;
+    margin: 50px;
+}
+
+.usernav a, .usernav button, .navigation a {
+    color: #28ffff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    background: none;
+    border: solid 3px #28ffff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(0);
+}
+
+.usernav a:hover, .usernav button:hover, .navigation a:hover {
+    background-color: #28ffff;
+    color: #282c34;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #28ffff, 0 0 20px #28ffff;
+}
+
+.usernav a:focus, .usernav button:focus, .navigation a:focus {
+    background-color: #28ffff;
+    color: #282c34;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #28ffff, 0 0 20px #28ffff;
+}
+
+.usernav a:active, .usernav button:active, .navigation a:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -1,0 +1,133 @@
+/* Estilo para el contenedor de las publicaciones */
+.postList {
+    list-style-type: none;
+    padding-top: 20px;
+    margin: 0;
+    padding-left: 10px; /* Agrega un pequeño padding al lado izquierdo */
+    padding-right: 10px; /* Agrega un pequeño padding al lado derecho */
+    display: flex;
+    flex-direction: column; /* Asegura que las tarjetas se apilen verticalmente */
+    gap: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Estilo para cada tarjeta de publicación */
+.postCard {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible en su contenedor */
+    max-width: 70%; /* Limita el ancho máximo */
+    margin: 0 auto; /* Centra la tarjeta en su contenedor */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+    word-wrap: break-word; /* Asegura que el texto largo se ajuste */
+    overflow-wrap: break-word; /* Para que se rompa el texto largo sin espacios */
+}
+
+/* Comportamiento de las tarjetas al pasar el cursor */
+.postCard:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para el título de la publicación */
+.postTitle {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    color: #4504a2;
+    margin-bottom: 10px;
+}
+
+/* Estilo para el contenido de la publicación */
+.postContent {
+    font-size: 16px;
+    color: #8605ff;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    text-align: justify;
+    word-wrap: break-word; /* Asegura que el texto se ajuste y no desborde */
+    overflow-wrap: break-word; /* Para que se rompa el texto largo sin espacios */
+    max-height: none; /* Elimina el límite de altura para que el contenido pueda crecer */
+}
+
+/* Estilo para el autor */
+.postAuthor {
+    font-size: 14px;
+    color: #002362;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Estilo para los enlaces */
+a {
+    color: #28ffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+    font-size: 25px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto neón solo al pasar el cursor */
+a:hover {
+    text-decoration: none;
+    color: #fff; /* Cambiar el color del texto al hacer hover */
+    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff, 0 0 20px #28ffff; /* Resplandor neón solo al pasar el cursor */
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #28ffff;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de la línea debajo del enlace solo cuando se pasa el cursor */
+a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    box-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 20px #28ffff; /* Resplandor neón en la línea solo al pasar el cursor */
+}
+
+/* Estilo para botones */
+.postButton {
+    color: #28ffff;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 5px;
+    padding: 10px 20px;
+    border: 3px solid #28ffff;
+    border-radius: 25px;
+    background: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.postButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #28ffff, 0 0 20px #28ffff;
+}
+
+/* Estilo para el enlace "Volver" */
+.backLink {
+    color: #28ffff;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.backLink:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff; /* Efecto neón en el enlace */
+}

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import styles from './MyPosts.module.css'
 
 function MyPosts() {
     const [myPosts, setMyPosts] = useState([])
@@ -104,39 +106,47 @@ function MyPosts() {
     if (loading) return <p>Loading...</p>
 
     return (
-        <div>
-            <h1>Mis publicaciones</h1>
-            {myPosts.map(post => (
-                <div key={post._id}>
-                    {editPost === post._id ? (
+        <>
+    <div>
+        <h1>Mis publicaciones</h1>
+        {myPosts.map((post) => (
+            <div key={post._id} className={styles.postCard}>
+                {editPost === post._id ? (
+                    <div>
+                        <h2>Editar publicación</h2>
+                        <input 
+                            type="text" 
+                            value={editForm.title} 
+                            onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} 
+                            placeholder="Title"
+                            className={styles.postTitle}
+                        />
+                        <textarea 
+                            value={editForm.content} 
+                            onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} 
+                            placeholder="Content"
+                            className={styles.postContent}
+                        />
+                        <button onClick={saveEdit} className="postButton">Grabar</button> {/* Puedes personalizar este botón si lo deseas */}
+                        <button onClick={cancelEdit} className="postButton">Cancelar</button>
+                    </div>
+                ) : (
+                    <div>
+                        <h2 className={styles.postTitle}>{post.title}</h2>
+                        <p className={styles.postContent}>{post.content}</p>
+                        {post.image && <img src={post.image} alt={post.title} />}
                         <div>
-                            <h2>Editar publicación</h2>
-                            <input 
-                                type="text" 
-                                value={editForm.title} 
-                                onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} 
-                                placeholder="Title"
-                            />
-                            <textarea 
-                                value={editForm.content} 
-                                onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} 
-                                placeholder="Content"
-                            />
-                            <button onClick={saveEdit}>Grabar</button>
-                            <button onClick={cancelEdit}>Cancelar</button>
+                            <button onClick={() => deletePost(post._id)} className={styles.postButton}>Borrar</button>
+                            <button onClick={() => setEditPost(post._id)} className={styles.postButton}>Editar</button>
                         </div>
-                    ) : (
-                        <div>
-                            <h2>{post.title}</h2>
-                            <p>{post.content}</p>
-                            {post.image && <img src={post.image} alt={post.title} />}
-                            <button onClick={() => deletePost(post._id)}>Borrar</button>
-                            <button onClick={() => setEditPost(post._id)}>Editar</button>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
+                    </div>
+                )}
+            </div>
+        ))}
+        <Link to={'/posts'} className={styles.backLink}>Volver</Link>
+    </div>
+</>
+
     )
 }
 

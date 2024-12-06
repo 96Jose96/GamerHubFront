@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import firebaseConfig from '../firebase/config'
+import firebaseConfig from '../../firebase/config'
 import { initializeApp } from 'firebase/app'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import styles from './Login.module.css'
 
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
@@ -71,32 +72,37 @@ function LoginForm() {
   }
 
   return (
-    <div className="App">
-      <h1>Iniciar sesión</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Correo electrónico"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Contraseña"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
-        </button>
-      </form>
-      <p>{message}</p>
+    <div>
+      <div className={styles.formcontainer}>
+        <h1>Iniciar sesión</h1>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className={styles.input}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            value={formData.password}
+            onChange={handleChange}
+            required
+            className={styles.input}
+          />
+          <button type="submit" disabled={loading} className={styles.button}>
+            {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
+          </button>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
-  );
+  )
 }
+
 
 export default LoginForm

@@ -38,41 +38,46 @@ function Home() {
             setCurrentIndex((prevIndex) =>
                 (prevIndex + 1) % homeNews.length
             );
-        }, 5000)
+        }, 7000)
 
         return () => clearInterval(interval)
     }, [homeNews.length])
 
     return (
         <div>
-            {loading && !error ? (
-                <p>Cargando noticias...</p>
-            ) : error ? (
-                <p>Hubo un error: {error}</p>
-            ) : homeNews.length === 0 ? (
-                <p>No hay noticias disponibles.</p>
-            ) : (
-                <div className={styles.carousel}>
-                    <div className={styles.slides}>
-                        {homeNews.map((news, index) => (
-                            <div
-                                key={news.id}
-                                className={`${styles.slide} ${
-                                    index === currentIndex ? styles.active : ""
-                                }`}
-                            >
-                                <img
-                                    src={news.urlToImage}
-                                    alt={news.title}
-                                    className={styles.image}
-                                />
-                                <h2 className={styles.title}>{news.title}</h2>
-                            </div>
-                        ))}
+    {loading && !error ? (
+        <p>Cargando noticias...</p>
+    ) : error ? (
+        <p>Hubo un error: {error}</p>
+    ) : homeNews.length === 0 ? (
+        <p>No hay noticias disponibles.</p>
+    ) : (
+        <div className={styles.carousel}>
+            <div
+                className={styles.slides}
+                style={{ transform: `translatex(-${currentIndex * 100}%)` }}
+            >
+                {homeNews.map((news, index) => (
+                    <div
+                        key={news.id}
+                        className={`${styles.slide} ${
+                            index === currentIndex ? styles.active : ""
+                        }`}
+                    >
+                        <div className={styles.imageContainer}>
+                            <img
+                                src={news.urlToImage}
+                                alt={news.title}
+                                className={styles.image}
+                            />
+                            <h2 className={styles.title}>{news.title}</h2>
+                        </div>
                     </div>
-                </div>
-            )}
+                ))}
+            </div>
         </div>
+    )}
+</div>
     )
 }
 
