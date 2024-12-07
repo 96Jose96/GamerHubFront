@@ -7,119 +7,111 @@ import axios from 'axios';
 import styles from '../login/Login.module.css'
 
 const app = initializeApp(firebaseConfig)
-const auth = getAuth(app);
-function RegistryForm() {
-    
-  const urlApi = import.meta.env.VITE_REGISTRY_URL
+const auth = getAuth(app)
 
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    profileimage: '',
-  });
-  const [message, setMessage] = useState('')
-  const [loading, setLoading] = useState(false)
+function RegistryForm() {    
+    const urlApi = import.meta.env.VITE_REGISTRY_URL
 
-  const navigate = useNavigate()
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        profileimage: '',
+    })
+
+    const [message, setMessage] = useState('')
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
   
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
- 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setMessage('');
-    try {
- 
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      )
-      const idToken = await userCredential.user.getIdToken()
-      
-      const response = await axios.post(urlApi, {
-        idToken,
-        username: formData.username,
-        email: formData.email,
-        password: formData.password,
-      })
-
-      setMessage(response.data.message)
-
-      if (response.data.message === 'Usuario registrado con éxito') {
-        setMessage('Usuario registrado con éxito')
-        setTimeout(() => {
-          navigate('/login')
-        }, 2000)
-      } else {
-        setMessage('No se pudo completar el registro.')
-      }
-
-
-    } catch (error) {
-      
-      if (error.response) {
-        
-        console.error('Error en la respuesta del backend:', error.response.data)
-        setMessage(error.response.data.message || 'Error en el servidor.')
-      } else if (error.request) {
-        
-        console.error('Error de red o sin respuesta del backend:', error.request)
-        setMessage('Error de conexión. Verifica tu red.')
-      } else {
-      
-        console.error('Error inesperado:', error.message);
-        setMessage('Ocurrió un error inesperado. Inténtalo de nuevo.')
-      }
-    } finally {
-      setLoading(false)
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        })
     }
-  };
-  return (
-    <div>
-      <div className={styles.formcontainer}>
-        <h1>Registrar Usuario</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            className={styles.input}
-            type="text"
-            name="username"
-            placeholder="Nombre de usuario"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <input
-            className={styles.input}
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            className={styles.input}
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Registrando...' : 'Registrar'}
-          </button>
-        </form>
-        <p>{message}</p>
-      </div>
-    </div>
-  );
+ 
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        setMessage('')
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                auth,
+                formData.email,
+                formData.password
+            )
+
+            const idToken = await userCredential.user.getIdToken()
+      
+            const response = await axios.post(urlApi, {
+                idToken,
+                username: formData.username,
+                email: formData.email,
+                password: formData.password,
+            })
+
+            setMessage(response.data.message)
+
+            if (response.data.message === 'Usuario registrado con éxito') {
+                setMessage('Usuario registrado con éxito')
+                setTimeout(() => {
+                    navigate('/login')
+                }, 2000)
+            } else {
+              setMessage('No se pudo completar el registro.')
+            }
+        } catch (error) {
+            if (error.response) {
+                setMessage(error.response.data.message || 'Error en el servidor.')
+            } else if (error.request) {
+                setMessage('Error de conexión. Verifica tu red.')
+            } else {
+                setMessage('Ocurrió un error inesperado. Inténtalo de nuevo.')
+            }
+        } finally {
+            setLoading(false)
+        }
+    }
+    return (
+        <div>
+            <div className={styles.formcontainer}>
+                <h1>Registrar Usuario</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        name="username"
+                        placeholder="Nombre de usuario"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        className={styles.input}
+                        type="email"
+                        name="email"
+                        placeholder="Correo electrónico"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        className={styles.input}
+                        type="password"
+                        name="password"
+                        placeholder="Contraseña"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type="submit" disabled={loading} className={styles.button}>
+                        {loading ? 'Registrando...' : 'Registrar'}
+                    </button>
+                </form>
+                <p>{message}</p>
+            </div>
+        </div>
+    )
 }
+
 export default RegistryForm

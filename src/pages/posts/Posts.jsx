@@ -29,16 +29,13 @@ function Posts() {
                         'Authorization': `Bearer ${idToken}`,
                         'Content-Type': 'application/json',
                     }
-                });
+                })
 
                 if (!response.ok) {
                     throw new Error('Error al obtener las publicaciones')
                 }
 
-                const postsData = await response.json();
-                console.log('Publicaciones recibidas:', postsData)
-
-                
+                const postsData = await response.json()
                 const sortedPosts = postsData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 
                 setPosts(sortedPosts)
@@ -48,47 +45,44 @@ function Posts() {
                 setError(error.message)
                 setLoading(false)
             }
-        };
-
-        fetchPosts();
-    }, [navigate]);
+        }
+        fetchPosts()
+    }, [navigate])
 
     return (
         <>
-  {authMessage && authMessage ? (
-    <p className={styles.errorMessage}>{authMessage}</p>
-  ) : (
+            {authMessage && authMessage ? (
+            <p className={styles.errorMessage}>{authMessage}</p>
+            ) : ( 
+                <div>
+                    {loading && !error ? (
+                    <p>Cargando publicaciones...</p>
+                    ) : error ? (
+                    <p>Hubo un error: {error}</p>
+                    ) : (
+                    <ul className={styles.postList}>
+                    <div>
+                        <Link to={'/posts/create'} className={styles.createPostLink}>Crear publicación</Link>
+                        <Link to={'/posts/myposts'} className={styles.myPostLink}>Ir a mis publicaciones</Link>
+                    </div>
+                        {posts.length === 0 ? (
+                        <p>No hay publicaciones disponibles.</p>
+                        ) : (
+                        posts.map((post) => (
+                            <li key={post._id} className={styles.postCard}>
+                                <h2 className={styles.postTitle}>{post.title}</h2>
+                                <p className={styles.postContent}>{post.content}</p>
+                                <p className={styles.postAuthor}>Autor: {post.author}</p>
+                            </li>
+                        ))
+                        )}
+                    </ul>
+                    )}
+                </div>
     
-      <div>
-        {loading && !error ? (
-          <p>Cargando publicaciones...</p>
-        ) : error ? (
-          <p>Hubo un error: {error}</p>
-        ) : (
-          <ul className={styles.postList}>
-            <div>
-              <Link to={'/posts/create'} className={styles.createPostLink}>Crear publicación</Link>
-              <Link to={'/posts/myposts'} className={styles.myPostLink}>Ir a mis publicaciones</Link>
-            </div>
-            {posts.length === 0 ? (
-              <p>No hay publicaciones disponibles.</p>
-            ) : (
-              posts.map((post) => (
-                <li key={post._id} className={styles.postCard}>
-                  <h2 className={styles.postTitle}>{post.title}</h2>
-                  <p className={styles.postContent}>{post.content}</p>
-                  <p className={styles.postAuthor}>Autor: {post.author}</p>
-                </li>
-              ))
             )}
-          </ul>
-        )}
-      </div>
-    
-  )}
-</>
-
-  );
+        </>
+    )
 }
 
 export default Posts

@@ -1,166 +1,140 @@
-h2 {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 20px;
-    font-size: 25px;
-}
-
 .myPostsContainer {
-    margin-top: 200px;
-    text-align: center
-}
-
-.myPostsTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.postCard {
-    text-align: left;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease;
-    width: 100%;
-    max-width: 70%;
-    margin: 0 auto;
-    margin-top: 20px;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.postCard:hover {
-    transform: scale(1.05);
-}
-
-.postTitle {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: bold;
-    color: #4504a2;
-    margin-bottom: 10px;
-}
-
-.postContent {
-    font-size: 16px;
-    color: #8605ff;
-    margin-bottom: 10px;
-    line-height: 1.6;
-    text-align: justify;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-height: none;
-}
-
-.postAuthor {
-    font-size: 14px;
-    color: #002362;
-    font-style: italic;
-    margin-top: 10px;
-}
-
-a {
-    margin-left: 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: 20px;
-    font-size: 25px;
-    position: relative;
-    padding-bottom: 5px;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    text-decoration: none;
+    background-color: #1e1e1e;
     color: #fff;
-    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff, 0 0 20px #28ffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    box-sizing: border-box;
 }
 
-a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #28ffff;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
+.myPostsTitle h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #00ff00;
+    margin-bottom: 20px;
 }
 
-a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-    box-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 20px #28ffff;
-}
-
-.postButton {
-    color: #28ffff;
+.myPostsTitle .backLink {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #00ff00;
     text-decoration: none;
-    font-weight: bold;
-    margin: 5px;
-    padding: 10px 20px;
-    border: 3px solid #28ffff;
-    border-radius: 25px;
-    background: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.postButton:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #28ffff, 0 0 20px #28ffff;
-}
-
-.backLink {
-    color: #28ffff;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-top: 20px;
-    display: inline-block;
     transition: color 0.3s ease;
 }
 
 .backLink:hover {
-    color: #fff;
-    text-shadow: 0 0 5px #28ffff, 0 0 10px #28ffff, 0 0 15px #28ffff;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+    transition: text-shadow 0.3s ease, color 0.3s ease;
 }
 
-.inputTitle, .inputText{
-    width: 95%;
-    padding: 10px;
-    margin: 20px 0;
-    border: solid 3px #28ffff;
-    background: none;
-    color: #28ffff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(0);
-}
-
-.inputText {
+.postCard {
+    background-color: #2a2a2a;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #fff;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.inputTitle:focus, .inputText:focus {
-    background-color: #28ffff;
-    color: #282c34;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #28ffff, 0 0 20px #28ffff;
+.postCard h2 {
+    font-size: 24px;
+    color: #00ff00;
+    margin-bottom: 10px;
 }
 
-.inputText {
-    min-height: 100px;
-    resize: vertical;
+.postCard p {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.postCard img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.postCard button {
+    background-color: #00ff00;
+    color: #121212;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.postCard button:hover {
+    background-color: #00cc00;
+}
+
+.postCard .inputTitle,
+.postCard .inputText {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.postCard .inputTitle:focus,
+.postCard .inputText:focus {
+    border-color: #00ff00;
+}
+
+.postCard .postButton {
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.postCard .postButton:hover {
+    background-color: #cc5200;
+}
+
+@media (max-width: 768px) {
+    .myPostsContainer {
+        margin-top: 60px;
+        padding: 20px;
+    }
+
+    .myPostsTitle h2 {
+        font-size: 24px;
+    }
+
+    .myPostsTitle .backLink {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .myPostsContainer {
+        margin-top: 70px;
+        padding: 15px;
+    }
+
+    .myPostsTitle h2 {
+        font-size: 20px;
+    }
+
+    .myPostsTitle .backLink {
+        font-size: 14px;
+    }
 }

@@ -34,7 +34,7 @@ function MyPosts() {
         } catch (error) {
             console.error('Fetch posts FAILED', error)
         }
-    };
+    }
 
     const deletePost = async (postId) => {
         const idToken = localStorage.getItem('idToken')
@@ -62,7 +62,7 @@ function MyPosts() {
         } catch (error) {
             console.error('Delete post FAILED', error)
         }
-    };
+    }
 
     const saveEdit = async () => {
         const idToken = localStorage.getItem('idToken')
@@ -80,7 +80,7 @@ function MyPosts() {
                     title: editForm.title, 
                     content: editForm.content 
                 })
-            });
+            })
 
             if (!response.ok) {
                 throw new Error('Failed to edit post')
@@ -92,12 +92,12 @@ function MyPosts() {
         } catch (error) {
             console.error('Error editing post:', error)
         }
-    };
+    }
 
     const cancelEdit = () => {
         setEditPost(null)
         setEditForm({ title: '', content: '' })
-    };
+    }
 
     useEffect(() => {
         fetchMyPosts()
@@ -107,50 +107,49 @@ function MyPosts() {
 
     return (
         <>
-    <div className={styles.myPostsContainer}>
-        <div className={styles.myPostsTitle}>
-            <h2>Mis publicaciones</h2>
-            <Link to={'/posts'} className={styles.backLink}>Volver</Link>
-        </div>
-        {myPosts.map((post) => (
-            <div key={post._id} className={styles.postCard}>
-                {editPost === post._id ? (
-                    <div>
-                        <h2>Editar publicación</h2>
-                        <input 
-                            type="text" 
-                            value={editForm.title} 
-                            onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} 
-                            placeholder="Title"
-                            maxLength="80"
-                            className={styles.inputTitle}
-                        />
-                        <textarea 
-                            value={editForm.content} 
-                            onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} 
-                            placeholder="Content"
-                            maxLength="200"
-                            className={styles.inputText}
-                        />
-                        <button onClick={saveEdit} className="postButton">Grabar</button>
-                        <button onClick={cancelEdit} className="postButton">Cancelar</button>
-                    </div>
-                ) : (
-                    <div>
-                        <h2 className={styles.postTitle}>{post.title}</h2>
-                        <p className={styles.postContent}>{post.content}</p>
-                        {post.image && <img src={post.image} alt={post.title} />}
+            <div className={styles.myPostsContainer}>
+                <div className={styles.myPostsTitle}>
+                    <h2>Mis publicaciones</h2>
+                    <Link to={'/posts'} className={styles.backLink}>Volver</Link>
+                </div>
+                {myPosts.map((post) => (
+                <div key={post._id} className={styles.postCard}>
+                    {editPost === post._id ? (
                         <div>
-                            <button onClick={() => deletePost(post._id)} className={styles.postButton}>Borrar</button>
-                            <button onClick={() => setEditPost(post._id)} className={styles.postButton}>Editar</button>
+                            <h2>Editar publicación</h2>
+                            <input 
+                                type="text" 
+                                value={editForm.title} 
+                                onChange={(e) => setEditForm({ ...editForm, title: e.target.value })} 
+                                placeholder="Title"
+                                maxLength="80"
+                                className={styles.inputTitle}
+                            />
+                            <textarea 
+                                value={editForm.content} 
+                                onChange={(e) => setEditForm({ ...editForm, content: e.target.value })} 
+                                placeholder="Content"
+                                maxLength="200"
+                                className={styles.inputText}
+                            />
+                            <button onClick={saveEdit} className="postButton">Grabar</button>
+                            <button onClick={cancelEdit} className="postButton">Cancelar</button>
                         </div>
-                    </div>
-                )}
+                    ) : (
+                        <div>
+                            <h2 className={styles.postTitle}>{post.title}</h2>
+                            <p className={styles.postContent}>{post.content}</p>
+                            {post.image && <img src={post.image} alt={post.title} />}
+                            <div>
+                                <button onClick={() => deletePost(post._id)} className={styles.postButton}>Borrar</button>
+                                <button onClick={() => setEditPost(post._id)} className={styles.postButton}>Editar</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                ))}
             </div>
-        ))}
-    </div>
-</>
-
+        </>
     )
 }
 

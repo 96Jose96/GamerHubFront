@@ -45,28 +45,25 @@ table {
 /*---------------------------------------------------------*/
 
 body {
-	padding-top: 100px;
-  margin: 0;
+	padding: 0;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-image: url(./assets/GreenWallpaper.jpg);
+	background-color: #121212;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
   
-  font-family: Arial, sans-serif;
-  background-image: url(./assets/Main-Wallpaper.jpg);
-  background-attachment: fixed; /* La imagen de fondo no se moverá */
-  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
-  background-position: center center; /* Centra la imagen de fondo */
+@media (max-width: 768px) {
+	body {
+		background-attachment: scroll;
+	}
 }
-
+  
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
-
-.mainContent {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 20px;
-}
-
-
-

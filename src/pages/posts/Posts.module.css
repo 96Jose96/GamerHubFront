@@ -1,57 +1,151 @@
 .postList {
     list-style-type: none;
-    margin-top: 150px;
+    padding: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    max-width: 1000px;
+    padding-top: 100px;
 }
-
+  
 .postCard {
-    
-    max-width: 80%;
-    width: 100%;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    background-color: #1e1e1e;
+    color: #fff;
     padding: 20px;
-    transition: transform 0.3s ease;
-    box-sizing: border-box;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 15px 0;
+    transition: transform 0.3s ease-in-out;
 }
-
+  
 .postCard:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
-
+  
 .postTitle {
-    text-transform: uppercase;
     font-size: 24px;
-    font-weight: bold;
-    color: #4504a2;
+    color: #00ff00;
     margin-bottom: 10px;
-    text-align: center;
 }
-
+  
 .postContent {
     font-size: 16px;
-    color: #8605ff;
+    color: #bbb;
     margin-bottom: 10px;
-    line-height: 1.6;
-    text-align: justify;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 120px;
+    text-align: left;
 }
-
+  
 .postAuthor {
-    font-size: 16px;
-    font-weight: bold;
-    color: #4504a2;
+    font-size: 14px;
+    color: #00ff00;
 }
-
-.errorMessage {
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
+  
+.createPostLink,
+.myPostLink {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 15px;
+    padding: 10px 15px;
     text-align: center;
+    font-size: 18px;
+    color: #00ff00;
+    text-decoration: none;
+    border: 2px solid #fff;
+    background-color: #222;
+    border-radius: 8px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
+  
+.createPostLink:hover,
+.myPostLink:hover {
+    background-color: #00ff00;
+    color: #121212;
+}
+  
+.errorMessage {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+  
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #00ff00;
+    margin-top: 20px;
+}
+  
+@media (max-width: 768px) {
+    .postList {
+        width: 95%;
+    }
+  
+    .postCard {
+        padding: 15px;
+        max-width: 90%;
+    }
+  
+    .postTitle {
+        font-size: 22px;
+    }
+  
+    .postContent {
+        font-size: 14px;
+    }
+  
+    .postAuthor {
+        font-size: 12px;
+    }
+  
+    .createPostLink,
+    .myPostLink {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+  
+    p {
+        font-size: 16px;
+    }
+}
+  
+@media (max-width: 480px) {
+    .postList {
+        width: 100%;
+    }
+  
+    .postCard {
+        padding: 10px;
+        max-width: 100%;
+    }
+  
+    .postTitle {
+        font-size: 20px;
+    }
+  
+    .postContent {
+        font-size: 12px;
+    }
+  
+    .postAuthor {
+        font-size: 10px;
+    }
+  
+    .createPostLink,
+    .myPostLink {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+  
+    p {
+        font-size: 14px;
+    }
+}
+  

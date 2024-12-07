@@ -18,7 +18,7 @@ function LoginForm() {
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
   
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({

@@ -51,42 +51,43 @@ function CreatePost() {
     }
 
     return (
-      <div className={styles.formcontainer}>
-      <div>
-        <h1>Crear Publicación</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="title">Título:</label>
-            <input
-              className={styles.input}
-              type="text"
-              name="title"
-              id="title"
-              value={formData.title}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="content">Contenido:</label>
-            <textarea
-              className={styles.contentInput}
-              name="content"
-              id="content"
-              rows="5"
-              value={formData.content}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button type="submit" disabled={loading}>
-            {loading ? "Publicando..." : "Crear Publicación"}
-          </button>
-        </form>
-        {message && <p>{message}</p>}
-      </div>
-      <Link to={'/posts'}>Volver</Link>
-    </div>
+        <div className={styles.formcontainer}>
+            <div className={styles.formContent}>
+                <h1>Crear Publicación</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="title">Título:</label>
+                        <input
+                            className={styles.input}
+                            type="text"
+                            name="title"
+                            id="title"
+                            value={formData.title}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="content">Contenido:</label>
+                        <textarea
+                            className={styles.contentInput}
+                            name="content"
+                            id="content"
+                            rows="5"
+                            value={formData.content}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" disabled={loading}>
+                        {loading ? "Publicando..." : "Crear Publicación"}
+                    </button>
+                </form>
+                {message && <p>{message}</p>}
+                <Link to="/posts" className={styles.backLink}>Volver</Link>
+            </div>
+        </div>
+
     )
 }
 
